@@ -1,0 +1,9 @@
+*.pyc
+gijilink-api/__pycache__
+PoliLink.md
+gijilink-web/node_modules/
+gijilink-db/mysql/
+diagram
+gijilink-api/config/local_settings.py
+docs/dmp/
+.DS_Store

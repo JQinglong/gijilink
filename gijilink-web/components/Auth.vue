@@ -21,6 +21,9 @@ const handleLogin = async () => {
 </script>
 
 <template>
+  <h1 class="text-3xl font-bold underline">
+    Hello world!
+  </h1>
   <form class="row flex-center flex" @submit.prevent="handleLogin">
     <div class="col-6 form-widget">
       <h1 class="header">Supabase + Nuxt 3</h1>

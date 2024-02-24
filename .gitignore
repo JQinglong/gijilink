@@ -6,6 +6,7 @@ gijilink-api/config/local_settings.py
 gijilink-db/mysql/
 gijilink-web/.env
 gijilink-web/node_modules/
+gijilink-web/.nuxt/
 
 # Nuxt dev/build outputs
 .output

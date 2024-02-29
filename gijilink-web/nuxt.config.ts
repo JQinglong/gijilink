@@ -1,4 +1,7 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/supabase', '@nuxt/ui'],
+  modules: ['@nuxtjs/supabase', '@nuxt/ui', '@nuxtjs/color-mode'],
+  colorMode: {
+    dataValue: 'theme', // activate data-theme in <html> tag
+  },
 })

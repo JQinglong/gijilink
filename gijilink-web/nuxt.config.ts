@@ -4,4 +4,15 @@ export default defineNuxtConfig({
   colorMode: {
     dataValue: 'theme', // activate data-theme in <html> tag
   },
+  runtimeConfig: {
+    public: {
+      baseUrl: process.env.BASE_URL || 'http://localhost:3000/'
+    }
+  },
+  supabase: {
+    redirectOptions: {
+      login: '/',
+      callback: '/confirm'
+    }
+  },
 })

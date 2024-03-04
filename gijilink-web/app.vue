@@ -1,5 +1,7 @@
 <script setup>
 const user = useSupabaseUser();
+console.log('user', user)
+
 const colorMode = useColorMode();
 const themes = [
   "light",
@@ -89,7 +91,7 @@ const themes = [
         <!-- Page content here -->
         <Account v-if="user" />
         <Auth v-else />
-        <div class="flex flex-col">
+        <div class="flex flex-col p-4">
           <h1 class="md:text-xl mb-5 font-bold">Buttons</h1>
           <div class="flex space-x-5 overflow-scroll">
             <button class="btn">Button</button>

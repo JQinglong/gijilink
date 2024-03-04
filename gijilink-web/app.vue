@@ -1,6 +1,6 @@
 <script setup>
 const user = useSupabaseUser();
-console.log('user', user)
+console.log("user", user);
 
 const colorMode = useColorMode();
 const themes = [

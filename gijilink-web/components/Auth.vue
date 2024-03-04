@@ -1,6 +1,7 @@
 <script setup>
 const supabase = useSupabaseClient();
-const config = useRuntimeConfig()
+const config = useRuntimeConfig();
+const { auth } = useSupabaseClient()
 
 const loading = ref(false);
 const email = ref("");
@@ -11,9 +12,9 @@ const handleLogin = async () => {
   try {
     loading.value = true;
     const options = {
-        emailRedirectTo: config.public.baseUrl,
-      }
-      console.log('options', options);
+      emailRedirectTo: config.public.baseUrl,
+    };
+    console.log("options", options);
     const { error } = await supabase.auth.signInWithOtp({
       email: email.value,
       options: options,
@@ -53,5 +54,24 @@ const handleLogin = async () => {
         </div>
       </div>
     </form>
+    <div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <h2 class="my-6 text-center text-3xl font-extrabold u-text-white">
+        Sign in to your account
+      </h2>
+      <LoginCard>
+        <UButton
+          class="mt-3"
+          icon="i-mdi-github"
+          block
+          label="Github"
+          variant="black"
+          @click="
+            auth.signInWithOAuth({
+              provider: 'github',
+            })
+          "
+        />
+      </LoginCard>
+    </div>
   </div>
 </template>

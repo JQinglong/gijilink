@@ -91,6 +91,7 @@ const themes = [
         <!-- Page content here -->
         <Account v-if="user" />
         <Auth v-else />
+        <Database/>
         <div class="flex flex-col p-4">
           <h1 class="md:text-xl mb-5 font-bold">Buttons</h1>
           <div class="flex space-x-5 overflow-scroll">

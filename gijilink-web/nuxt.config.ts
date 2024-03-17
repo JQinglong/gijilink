@@ -1,5 +1,6 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  ssr: false,
   modules: ['@nuxtjs/supabase', '@nuxt/ui', '@nuxtjs/color-mode'],
   colorMode: {
     dataValue: 'theme', // activate data-theme in <html> tag
@@ -10,9 +11,10 @@ export default defineNuxtConfig({
     }
   },
   supabase: {
-    redirectOptions: {
-      login: '/',
-      callback: '/'
-    }
+    // redirectOptions: {
+    //   login: '/',
+    //   callback: '/'
+    // }
+    redirect: false
   },
 })

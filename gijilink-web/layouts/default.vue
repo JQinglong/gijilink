@@ -19,7 +19,7 @@
               stroke-linejoin="round"
               stroke-width="2"
               d="M4 6h16M4 12h16M4 18h16"
-            ></path>
+            />
           </svg>
         </label>
       </div>
@@ -28,9 +28,13 @@
       </div>
       <div class="flex-none">
         <div class="p-2 flex gap-4">
-          <select class="select w-full max-w-xs" v-model="colorMode.preference">
-            <option disabled selected>Theme</option>
-            <option v-for="theme of themes" :key="theme">{{ theme }}</option>
+          <select v-model="colorMode.preference" class="select w-full max-w-xs">
+            <option disabled selected>
+              Theme
+            </option>
+            <option v-for="theme of themes" :key="theme">
+              {{ theme }}
+            </option>
           </select>
         </div>
         <div class="dropdown dropdown-end">
@@ -40,7 +44,7 @@
             class="btn btn-ghost btn-circle avatar"
           >
             <div class="w-10 rounded-full">
-              <img alt="User Settings" />
+              <img alt="User Settings">
             </div>
           </div>
           <ul
@@ -58,7 +62,7 @@
     </div>
     <!-- Drawer -->
     <div class="drawer lg:drawer-open">
-      <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+      <input id="my-drawer" type="checkbox" class="drawer-toggle">
       <div class="drawer-content flex flex-col p-2">
         <!-- pagesの呼び出し -->
         <slot />
@@ -68,7 +72,7 @@
           for="my-drawer"
           aria-label="close sidebar"
           class="drawer-overlay"
-        ></label>
+        />
         <ul class="menu p-4 w-64 min-h-full bg-base-200">
           <li>
             <a>
@@ -124,8 +128,8 @@
                   d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                 />
               </svg>
-              データメンテナンス</NuxtLink
-            >
+              データメンテナンス
+            </NuxtLink>
           </li>
         </ul>
       </div>
@@ -133,7 +137,9 @@
 
     <footer class="footer footer-center p-4 bg-base-300 text-base-content">
       <nav class="grid grid-flow-col gap-4">
-        <NuxtLink to="/about">About us</NuxtLink>
+        <NuxtLink to="/about">
+          About us
+        </NuxtLink>
         <a class="link link-hover">Terms of use</a>
       </nav>
       <aside>
@@ -147,20 +153,20 @@
 </template>
 
 <script setup>
-const colorMode = useColorMode();
+const colorMode = useColorMode()
 const themes = [
-  "light",
-  "dark",
-  "cupcake",
-  "emerald",
-  "retro",
-  "valentine",
-  "garden",
-  "aqua",
-  "pastel",
-  "acid",
-  "lemonade",
-  "night",
-  "winter",
-];
+  'light',
+  'dark',
+  'cupcake',
+  'emerald',
+  'retro',
+  'valentine',
+  'garden',
+  'aqua',
+  'pastel',
+  'acid',
+  'lemonade',
+  'night',
+  'winter'
+]
 </script>

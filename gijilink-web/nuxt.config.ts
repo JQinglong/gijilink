@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   ssr: false,
   modules: ['@nuxtjs/supabase', '@nuxt/ui', '@nuxtjs/color-mode'],
   colorMode: {
-    dataValue: 'theme', // activate data-theme in <html> tag
+    dataValue: 'theme' // activate data-theme in <html> tag
   },
   runtimeConfig: {
     public: {
@@ -17,4 +17,9 @@ export default defineNuxtConfig({
     // }
     redirect: false
   },
+  typescript: {
+    shim: false, // shimsファイル生成の無効化（VSCodeでVolarを使う場合はfalseにする）
+    strict: true, // 型チェックを厳格化
+    typeCheck: false // nuxt devまたはnuxt build時に型チェックを実行
+  }
 })

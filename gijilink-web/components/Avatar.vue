@@ -1,5 +1,10 @@
 <script setup>
-const props = defineProps(['path'])
+const props = defineProps({
+  path: {
+    type: String,
+    default: ''
+  }
+})
 const { path } = toRefs(props)
 
 const emit = defineEmits(['update:path', 'upload'])
@@ -13,10 +18,10 @@ const files = ref()
 const downloadImage = async () => {
   try {
     const { data, error } = await supabase.storage.from('avatars').download(path.value)
-    if (error) throw error
+    if (error) { throw error }
     src.value = URL.createObjectURL(data)
   } catch (error) {
-    console.error('Error downloading image: ', error.message)
+    console.error('Error downloading image: ', error.message)// eslint-disable-line no-console
   }
 }
 
@@ -36,7 +41,7 @@ const uploadAvatar = async (evt) => {
 
     const { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file)
 
-    if (uploadError) throw uploadError
+    if (uploadError) { throw uploadError }
 
     emit('update:path', filePath)
     emit('upload')
@@ -64,7 +69,7 @@ watch(path, () => {
       alt="Avatar"
       class="avatar image"
       style="width: 10em; height: 10em;"
-    />
+    >
     <div v-else class="avatar no-image" :style="{ height: size, width: size }" />
 
     <div style="width: 10em; position: relative;">
@@ -72,13 +77,13 @@ watch(path, () => {
         {{ uploading ? 'Uploading ...' : 'Upload' }}
       </label>
       <input
+        id="single"
         style="position: absolute; visibility: hidden;"
         type="file"
-        id="single"
         accept="image/*"
-        @change="uploadAvatar"
         :disabled="uploading"
-      />
+        @change="uploadAvatar"
+      >
     </div>
   </div>
 </template>

@@ -1,4 +1,5 @@
-<script setup>
+<script lang="ts">
+// 議事一覧
 const supabase = useSupabaseClient()
 const profiles = ref([])
 
@@ -10,16 +11,9 @@ async function getProfiles () {
 onMounted(() => {
   getProfiles()
 })
+
 </script>
 
 <template>
-  <div>
-    data
-    <ul>
-      <li v-for="profile in profiles" :key="profile.id">
-        {{ profile.id }}
-        {{ profile.username }}
-      </li>
-    </ul>
-  </div>
+  <div>議事一覧</div>
 </template>

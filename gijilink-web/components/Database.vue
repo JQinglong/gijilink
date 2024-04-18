@@ -1,24 +1,24 @@
-<script setup>
+<script setup lang="ts">
 const supabase = useSupabaseClient()
-const profiles = ref([])
+const councilMeetingList = ref([])
 
-async function getProfiles () {
-  const { data } = await supabase.from('profiles').select()
-  profiles.value = data
+async function getCouncilMeetingList () {
+  const { data } = await supabase.from('councilmeeting').select()
+  councilMeetingList.value = data
 }
 
 onMounted(() => {
-  getProfiles()
+  getCouncilMeetingList()
 })
 </script>
 
 <template>
   <div>
-    data
+    councilmeeting
     <ul>
-      <li v-for="profile in profiles" :key="profile.id">
-        {{ profile.id }}
-        {{ profile.username }}
+      <li v-for="councilMeeting in councilMeetingList" :key="councilMeeting.id">
+        {{ councilMeeting.id }}
+        {{ councilMeeting.name }}
       </li>
     </ul>
   </div>

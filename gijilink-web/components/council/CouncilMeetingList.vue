@@ -1,15 +1,15 @@
 <script lang="ts">
 // 議事一覧
 const supabase = useSupabaseClient()
-const profiles = ref([])
+const ministryList = ref([])
 
-async function getProfiles () {
-  const { data } = await supabase.from('profiles').select()
-  profiles.value = data
+async function getMinistryList () {
+  const { data } = await supabase.from('ministry').select()
+  ministryList.value = data
 }
 
 onMounted(() => {
-  getProfiles()
+  getMinistryList()
 })
 
 </script>

@@ -1,3 +1,10 @@
+<script setup>
+import MinistrySelect from '~/components/ministry/MinistrySelect.vue'
+
+const user = useSupabaseUser()
+console.log('user', user)// eslint-disable-line no-console
+</script>
+
 <template>
   <div class="flex flex-row">
     <div class="basis-3/4">
@@ -11,9 +18,15 @@
           About
         </NuxtLink>
         <!-- Page content here -->
+        「CouncilListHot」
+        <CouncilListHot />
+        「MinistrySelect」
+        <MinistrySelect />
         <Account v-if="user" />
         <Auth v-else />
+        「Database」
         <Database />
+        「CouncilMeetingList」
         <CouncilMeetingList />
         <div class="flex flex-col p-4">
           <h1 class="md:text-xl mb-5 font-bold">
@@ -43,12 +56,31 @@
       </div>
     </div>
     <div class="basis-1/4">
-      02
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+          <h2 class="card-title">
+            みんなの検索ランキング
+          </h2>
+          <ul class="menu bg-base-200 rounded-none">
+            <li><a>Item 1</a></li>
+            <li><a>Item 2</a></li>
+            <li><a>Item 3</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card w-96 bg-base-100 shadow-xl">
+        <div class="card-body">
+          <h2 class="card-title">
+            開発者からのお知らせ
+          </h2>
+          <ul class="menu bg-base-200 rounded-none">
+            <li><a>Item 1</a></li>
+            <li><a>Item 2</a></li>
+            <li><a>Item 3</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </template>
-
-<script setup>
-const user = useSupabaseUser()
-console.log('user', user)// eslint-disable-line no-console
-</script>

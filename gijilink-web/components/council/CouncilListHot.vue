@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { useCouncil } from '~/composables/useCouncil'
 
-const { fetchArticles, articles } = useCouncil()
-fetchArticles()
+const { getCouncilList, councilList } = useCouncil()
+getCouncilList()
 </script>
 
 <template>
   <div>
     <p>CouncilListHot</p>
     <ul>
-      <li v-for="article in articles" :key="article.id">
-        <NuxtLink :to="{path: '/', query: { id:article.id }}">
+      <li v-for="council in councilList" :key="council.id">
+        <NuxtLink :to="{path: '/', query: { id:council.id }}">
           {{
-            article.title
+            council.name
           }}
         </NuxtLink>
       </li>

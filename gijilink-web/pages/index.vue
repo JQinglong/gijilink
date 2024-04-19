@@ -1,6 +1,4 @@
 <script setup>
-import MinistrySelect from '~/components/ministry/MinistrySelect.vue'
-
 const user = useSupabaseUser()
 console.log('user', user)// eslint-disable-line no-console
 </script>
@@ -20,8 +18,6 @@ console.log('user', user)// eslint-disable-line no-console
         <!-- Page content here -->
         「CouncilListHot」
         <CouncilListHot />
-        「MinistrySelect」
-        <MinistrySelect />
         <Account v-if="user" />
         <Auth v-else />
         「Database」

@@ -1,3 +1,72 @@
+<script setup>
+const colorMode = useColorMode()
+const themes = [
+  'light',
+  'dark',
+  'cupcake',
+  'emerald',
+  'retro',
+  'valentine',
+  'garden',
+  'aqua',
+  'pastel',
+  'acid',
+  'lemonade',
+  'night',
+  'winter'
+]
+const items = [
+  {
+    icon: 'mdi-home',
+    title: 'ホーム',
+    to: '/'
+  },
+  // {
+  //   icon: 'mdi-apps',
+  //   title: 'memo',
+  //   to: '/memo'
+  // },
+  {
+    icon: 'mdi-forum',
+    title: '会議体検索',
+    to: '/council'
+  },
+  {
+    icon: 'mdi-tooltip-account',
+    title: '構成員検索',
+    to: '/person'
+  },
+  {
+    icon: 'mdi-comment-text',
+    title: '議事検索',
+    to: '/speech'
+  }
+  // {
+  //   icon: 'mdi-bookmark',
+  //   title: '後で見る',
+  //   to: '/later'
+  // }
+]
+const adminitems = [
+  {
+    icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+    title: 'データメンテナンス',
+    to: '/admin'
+  },
+  {
+    icon: 'M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z',
+    title: 'help',
+    to: '/lp'
+  }
+  // {
+  //   icon: 'mdi-cogs',
+  //   title: 'システム設定',
+  //   to: '/system/'
+  // },
+]
+
+</script>
+
 <template>
   <div>
     <!-- Navbar -->
@@ -74,8 +143,9 @@
           class="drawer-overlay"
         />
         <ul class="menu p-4 w-64 min-h-full bg-base-200">
-          <li>
-            <a>
+          <!-- Normal Menu -->
+          <li v-for="(item, i) in items" :key="i">
+            <NuxtLink :to="{path: item.to }">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5"
@@ -87,14 +157,17 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                  :d="item.icon"
                 />
               </svg>
-              <NuxtLink to="/lp">Landing</NuxtLink>
-            </a>
+              {{
+                item.title
+              }}
+            </NuxtLink>
           </li>
-          <li>
-            <a>
+          <!-- Admin Menu -->
+          <li v-for="(item, i) in adminitems" :key="i">
+            <NuxtLink :to="{path: item.to }">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5"
@@ -106,29 +179,12 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  :d="item.icon"
                 />
               </svg>
-              Item 1
-            </a>
-          </li>
-          <li>
-            <NuxtLink to="/admin/">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                />
-              </svg>
-              データメンテナンス
+              {{
+                item.title
+              }}
             </NuxtLink>
           </li>
         </ul>
@@ -151,22 +207,3 @@
     </footer>
   </div>
 </template>
-
-<script setup>
-const colorMode = useColorMode()
-const themes = [
-  'light',
-  'dark',
-  'cupcake',
-  'emerald',
-  'retro',
-  'valentine',
-  'garden',
-  'aqua',
-  'pastel',
-  'acid',
-  'lemonade',
-  'night',
-  'winter'
-]
-</script>

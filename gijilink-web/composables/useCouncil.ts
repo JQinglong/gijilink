@@ -4,6 +4,13 @@ interface Article {
     content: string;
 }
 
+export interface CouncilListRequest  {
+  limit?: number
+  offset?: number
+  ministry?: string
+  person?: string
+}
+
 // 今回は固定値として表示
 const demoArticles = [
   {
@@ -34,9 +41,12 @@ export function useCouncil () {
     article.value = demoArticles.find(article => id === article.id) || null
   }
 
-  const getCouncilList = async () => {
+  const getCouncilList = async(payload: CouncilListRequest = {}) => {
+    console.log('payload', payload)
     const supabase = useSupabaseClient()
-    const { data } = await supabase.from('council').select()
+    let query = supabase.from('council').select()
+    if (payload.ministry)  { query = query.eq('ministry_id', payload.ministry) }
+    const { data, error } = await query
     councilList.value = data
   }
 

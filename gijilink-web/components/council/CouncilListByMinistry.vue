@@ -1,27 +1,32 @@
+<script setup lang="ts">
+import { useMinistry } from '~/composables/useMinistry'
+import { useCouncil } from '~/composables/useCouncil'
+const { getMinistryList, ministryList } = useMinistry()
+const { getCouncilList, councilList } = useCouncil()
+const selectedMinistry : string = ref('')
+
+await getMinistryList()
+const items = await ministryList.value.map((ministry) => ({
+  label: ministry.name,
+  content: ministry.url,
+  ministry_id: ministry.id,
+}));
+
+
+function onTabChange (index) {
+  const item = items[index]
+  console.log('item', item)
+  getCouncilList({ministry: item.ministry_id})
+}
+
+</script>
 <template>
   <div>
-    <div role="tablist" class="tabs tabs-bordered">
-      <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Tab 1">
-      <div role="tabpanel" class="tab-content p-10">
-        Tab content 1
+    <UTabs :items="items" @change="onTabChange" class="menu bg-base-200 rounded-none" />
+    <ul>
+      <li v-for="council in councilList" :key="council.id">
+        <CouncilListItem  :council="council" />
+      </li>
+    </ul>
       </div>
-
-      <input
-        type="radio"
-        name="my_tabs_1"
-        role="tab"
-        class="tab"
-        aria-label="Tab 2"
-        checked
-      >
-      <div role="tabpanel" class="tab-content p-10">
-        Tab content 2
-      </div>
-
-      <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Tab 3">
-      <div role="tabpanel" class="tab-content p-10">
-        Tab content 3
-      </div>
-    </div>
-  </div>
 </template>

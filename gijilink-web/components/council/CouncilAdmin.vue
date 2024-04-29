@@ -10,7 +10,11 @@ getCouncil()
 <template>
   <div>
     会議体の管理
+        <!-- 会議体追加 -->
+        <CouncilAdd />
+
     {{ council }}
+    [ul]
     <ul>
       <li v-for="council in councilList" :key="council.id">
         <NuxtLink :to="{path: '/', query: { id:council.id }}">

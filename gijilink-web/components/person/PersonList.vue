@@ -3,6 +3,11 @@ import { usePerson } from '~/composables/usePerson'
 
 const { getPersonList, personList } = usePerson()
 getPersonList()
+const items = await personList.value.map((pserson) => ({
+  label: pserson.name,
+}));
+console.log('items',items)
+
 </script>
 
 <template>
@@ -12,7 +17,7 @@ getPersonList()
       <li v-for="person in personList" :key="person.id">
         <NuxtLink :to="{path: '/', query: { id:person.id }}">
           {{
-            person.id
+            person.name
           }}
         </NuxtLink>
       </li>

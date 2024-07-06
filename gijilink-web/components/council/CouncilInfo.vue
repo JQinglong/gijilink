@@ -7,8 +7,7 @@ interface Props {
 const props = defineProps<Props>()
 
 const {getCouncil, council } = useCouncil()
-getCouncil()
-
+getCouncil(props.councilId)
 
 
 </script>
@@ -16,7 +15,7 @@ getCouncil()
 <template>
     <div>
         「CouncilInfo」
-        <h3 class="title grow">{{ council }}</h3>
+        <h3 class="title grow">{{ council.name }}</h3>
 
     </div>
 </template>

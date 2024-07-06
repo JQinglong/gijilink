@@ -32,6 +32,7 @@ export function useCouncil () {
   const article = ref<Article | null>(null)
   const councilList = ref([])
   const council = ref([])
+  const supabase = useSupabaseClient()
 
   // 将来的にはAPIアクセス
   const fetchArticles = (): void => {
@@ -43,16 +44,18 @@ export function useCouncil () {
 
   const getCouncilList = async(payload: CouncilListRequest = {}) => {
     console.log('payload', payload)
-    const supabase = useSupabaseClient()
     let query = supabase.from('council').select()
     if (payload.ministry)  { query = query.eq('ministry_id', payload.ministry) }
     const { data, error } = await query
     councilList.value = data
   }
 
-  const getCouncil = async () => {
-    const { data } = await useFetch('/api/council/')
-    council.value = data
+  const getCouncil = async (id: string) => {
+    let query = supabase.from('council').select().eq('id', id)
+    const { data, error } = await query
+    if(data) {
+      council.value = data[0]
+    }
   }
 
   return {

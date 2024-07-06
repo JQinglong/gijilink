@@ -10,11 +10,7 @@ getCouncilList()
     <p>CouncilListHot</p>
     <ul>
       <li v-for="council in councilList" :key="council.id">
-        <NuxtLink :to="{path: '/', query: { id:council.id }}">
-          {{
-            council.name
-          }}
-        </NuxtLink>
+        <CouncilListItem :council="council" />
       </li>
     </ul>
   </div>

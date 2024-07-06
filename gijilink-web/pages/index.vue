@@ -8,15 +8,7 @@ console.log('user', user)// eslint-disable-line no-console
     <div class="basis-3/4">
       <div>
         <h1>Index page</h1>
-        <NuxtLink to="lp">
-          landing page
-        </NuxtLink>
-        <a href="/lp">LP</a>
-        <NuxtLink to="/about">
-          About
-        </NuxtLink>
         <!-- Page content here -->
-        「CouncilListHot」
         <CouncilListHot />
         <Account v-if="user" />
         <Auth v-else />
@@ -33,19 +25,19 @@ console.log('user', user)// eslint-disable-line no-console
               Button
             </button>
             <button class="btn btn-primary">
-              Button
+              primary
             </button>
             <button class="btn btn-secondary">
-              Button
+              secondary
             </button>
             <button class="btn btn-accent">
-              Button
+              accent
             </button>
             <button class="btn btn-ghost">
-              Button
+              ghost
             </button>
             <button class="btn btn-link">
-              Button
+              link
             </button>
           </div>
         </div>
